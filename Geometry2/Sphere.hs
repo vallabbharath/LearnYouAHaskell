@@ -1,0 +1,13 @@
+-- Method 2 of creating a module
+-- Create a folder with the module name and write individual ".hs" files inside
+-- Note the usage of "Module.subModule" for module name definition
+
+module Geometry2.Sphere(
+    volume,
+    area) where  
+  
+volume :: Float -> Float  
+volume radius = (4.0 / 3.0) * pi * (radius ^ 3)  
+  
+area :: Float -> Float  
+area radius = 4 * pi * (radius ^ 2) 
