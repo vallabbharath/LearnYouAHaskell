@@ -716,3 +716,9 @@ fibSetX2 = mult2 fibSet
 -- Usage:
 volumeCube = Cube.volume(4)
 areaSphere = Geometry1.sphereArea(3)
+
+-- To import a module, use 
+-- :m +ModuleName in the ghci shell
+-- import ModuleName in a Haskell file (.hs file)
+-- Read more here on ghci: 
+-- http://www.haskell.org/ghc/docs/5.04/html/users_guide/ghci.html
