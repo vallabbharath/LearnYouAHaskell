@@ -189,7 +189,7 @@ getFirstWord = takeWhile (/= ' ')
 oddSqSum = sum (takeWhile (< 10000) (filter (odd) (map (^2) [1..])))
 
 -- Same, using list comprehension
-oddSqSum2 = sum (takeWhile (<10000) [n^2 | n <- [1..], odd (n^2)])
+oddSqSum2 = sum (takeWhile (< 10000) [n^2 | n <- [1..], odd (n^2)])
 
 -- Collatz Sequence http://en.wikipedia.org/wiki/Collatz_conjecture
 collatzSeq :: (Integral a) => a -> [a]

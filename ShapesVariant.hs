@@ -1,8 +1,10 @@
 -- (..) after data type inside module command signifies all "value constructors"
--- are also exported with the said data type (here Shape and Point)
-module Shapes( 
-    Point(..),      -- exporting a data type
-    Shape(..),      -- exporting a data type
+-- are also exported with the said data type.  Here, for Point, the value
+-- constructors are exported, but for Shape, these are not exported.
+-- To create an instance of Shape, one has to use baseCircle or baseRect fns.
+module ShapesVariant( 
+    Point(..),      -- exporting a data type with assoc. value constructors
+    Shape,      -- exporting a data type
     surface,        -- exporting a function
     nudge,
     baseCircle,
