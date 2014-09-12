@@ -1,12 +1,17 @@
+-- Part of 09_input_and_output.hs (but independent on its own)
+-- Learn You a Haskell For Great Good
+-- Chapter 9: Input and Output
+-- http://learnyouahaskell.com/input-and-output
+
 -- Two ways of executing this haskell file
 -- From Command line:
 
 -- Method 1: Compile into an "exe" and run
-    -- > ghc --make 09_input_and_output.hs  
-    -- > ./09_input_and_output.exe
+    -- > ghc --make reverseSentence.hs  
+    -- > ./reverseSentence.exe
 
 -- Method 2: Run from commandline without creating "exe"
-    -- > runhaskell 09_input_and_output.hs
+    -- > runhaskell reverseSentence.hs
     
 main = do   
     line <- getLine  

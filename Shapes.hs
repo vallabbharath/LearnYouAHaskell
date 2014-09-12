@@ -1,3 +1,8 @@
+-- Part of 08_custom_types.hs (but independent on its own)
+-- Learn You a Haskell For Great Good
+-- Chapter 8: Making Our Own Types and Typeclasses
+-- http://learnyouahaskell.com/making-our-own-types-and-typeclasses
+
 -- (..) after data type inside module command signifies all "value constructors"
 -- are also exported with the said data type (here Shape and Point)
 module Shapes( 

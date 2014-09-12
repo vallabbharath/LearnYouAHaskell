@@ -1,3 +1,8 @@
+-- Part of 07_modules.hs (but independent on its own)
+-- Learn You a Haskell For Great Good
+-- Chapter 7: Modules
+-- http://learnyouahaskell.com/modules
+
 -- Method 1 of creating a module
 -- Using a Single ".hs" file and defining all functions inside the same
 
