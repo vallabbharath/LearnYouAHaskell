@@ -14,11 +14,11 @@ import Data.Char
 import Data.Function
 
 -- qualified import for Data.Map: functions clash with Data.List and Prelude
-import qualified Data.Map as Map 
+import qualified Data.Map as Map
 -- qualified import for Data.Set: functions clash with Data.List and Prelude
 import qualified Data.Set as Set
 
--- Importing in the ghci interpreter
+-- Importing in the ghci interpreter 
 -- Prelude> :m + Data.List
 -- Prelude Data.List> :m + Data.Map
 -- Prelude Data.List Data.Map>
@@ -38,7 +38,7 @@ import qualified Data.List
 import qualified Data.List as DL
 -- Now use DL.nub to call "nub" function
 
--- The next two lines are user defined modules. 
+-- The next two lines are user defined modules.
 -- See the last section "Creating Modules" for further explanation
 import Geometry1 as Geometry1
 -- (import Geometry2 as Geometry2) will be wrong! Geometry2 is not a .hs file!
@@ -48,19 +48,19 @@ import Geometry2.Cuboid as Cuboid
 import Geometry2.Cube as Cube
 
 -- Complete index of Modules
--- http://www.haskell.org/ghc/docs/latest/html/libraries/ 
+-- http://www.haskell.org/ghc/docs/latest/html/libraries/
 
 -- Search for Modules or APIs here
 -- Hoogle: http://haskell.org/hoogle
--- Hayoo: http://holumbus.fh-wedel.de/hayoo/hayoo.html 
+-- Hayoo: http://holumbus.fh-wedel.de/hayoo/hayoo.html
 
 
 -- nub is a function exposed by Data.List to remove duplicates
 unique_arunram = nub "arunram" -- returns "arunm"
 
 -- Writing a function to count number of unique elements
-numUniques :: (Eq a) => [a] -> Int  
-numUniques = length . nub 
+numUniques :: (Eq a) => [a] -> Int
+numUniques = length . nub
 num_unique_arunram = numUniques "arunram" -- returns 5
 
 -- Loading from ghci console - Use ":m +"
@@ -114,8 +114,8 @@ sumTypes = map sum $ transpose inFruits
 -- Lazy fold may cause stack overflow if the list is relatively big
 -- Lazy fold does not keep changing the accumulator until necessary
 -- Strict fold keeps updating the accumulator; avoids stack overflow
-reverseFold :: [a] -> [a]  
-reverseFold = foldl' (\acc x -> x : acc) []  
+reverseFold :: [a] -> [a]
+reverseFold = foldl' (\acc x -> x : acc) []
 
 revNum = reverseFold [1..10]
 
@@ -183,7 +183,7 @@ gtThan3   = takeWhile (>3) [10,9,8,1,2,8,9,10]      -- returns [10, 9, 8]
 sumLogFactors :: Int -> Float
 sumLogFactors n = sum $ map (logBase 10) $ map (fromIntegral) factors
     where factors = [x | x <- [1..n], n `mod` x == 0]
-    
+
 -- dropWhile
 -- dropWhile takes a predicate and a list
 -- returns the list from the first instance of false till the end
@@ -192,9 +192,9 @@ leaveFirstWord = dropWhile (/=' ') "Whatever be the sentence!"
 dropGtThan3   = dropWhile (>3) [10,9,8,1,2,8,9,10]    -- returns [1,2,8,9,10]
 
 -- Finding when the stock price exceeds 1000
-stock = [(994.4,2008,9,1), (995.2,2008,9,2), 
+stock = [(994.4,2008,9,1), (995.2,2008,9,2),
     (999.2,2008,9,3), (1001.4,2008,9,4), (998.3,2008,9,5)]
-dtExd1000 = head $ dropWhile 
+dtExd1000 = head $ dropWhile
     (\(val,y,m,d) -> val < 1000) stock -- returns (1001.4,2008,9,4)
 
 -- span
@@ -202,10 +202,10 @@ dtExd1000 = head $ dropWhile
 -- output: a tuple containing two lists
 -- first list is same as "takeWhile" output; second is remaining of the input
 sepAtFirstSpace     = span (/=' ') "Whatever be the sentence!"
-sepAtFirstGtThan3   = span (>3) [10,9,8,1,2,8,9,10]  
-tupleOut            = let (fw, rest) = span (/=' ') "This is a sentence" 
-                      in "First word:" ++ fw ++ ", the rest:" ++ rest  
-                     
+sepAtFirstGtThan3   = span (>3) [10,9,8,1,2,8,9,10]
+tupleOut            = let (fw, rest) = span (/=' ') "This is a sentence"
+                      in "First word:" ++ fw ++ ", the rest:" ++ rest
+
 -- break
 -- input: a predicate and a list
 -- output: a tuple containing two lists
@@ -232,9 +232,9 @@ groupedOrdLists = group $ sort [1, 2, 2, 1, 3, 4, 2, 4, 3]
 -- groupedOrdLists will have [[1,1],[2,2,2],[3,3],[4,4]]
 
 -- to count the occurrence of each distinct element
-countedElements = map (\l@(x:xs) -> (x, length l)) . group . 
+countedElements = map (\l@(x:xs) -> (x, length l)) . group .
     sort $ [1, 2, 2, 1, 3, 4, 2, 4, 3]
-    
+
 -- inits : recursively apply init
 initsOut = inits "loop" -- gives ["", "l", "lo", "loo", "loop"]
 -- Remember "init" and "last" are complements
@@ -250,12 +250,12 @@ loop5 = zipWith (++) (inits "loop")  (tails "loop")
 -- isInfixOf: built in function to search for a sublist within a list
 -- takes two lists as argument
 -- the following "search" is a kind of implementation of "isInfixOf"
-search :: (Eq a) => [a] -> [a] -> Bool  
-search needle haystack =   
-    let nlen = length needle  
-    in  foldl (\acc x -> if take nlen x == needle then True else acc) False 
-        (tails haystack) 
-       
+search :: (Eq a) => [a] -> [a] -> Bool
+search needle haystack =
+    let nlen = length needle
+    in  foldl (\acc x -> if take nlen x == needle then True else acc) False
+        (tails haystack)
+
 searchOut = search "vib" "vibgyor"          -- returns True
 infixOfOut = "bgy" `isInfixOf` "vibgyor"    -- returns True
 
@@ -271,8 +271,8 @@ elemOut1 = 'a' `elem` "Haskell"         -- True
 elemOut2 = 'b' `elem` "Haskell"         -- False
 notElemOut1 = 'a' `notElem` "Haskell"   -- False
 notElemOut2 = 'b' `notElem` "Haskell"   -- True
-    
--- partition : built-in function 
+
+-- partition : built-in function
 -- input: a predicate and a single list
 -- output: a tuple containing 2 lists
 -- the first one satisfying the predicate, the second one not satisfying
@@ -290,7 +290,7 @@ findOut1 = find (`elem` ['a'..'z']) "arun" -- gives "Just 'a'"
 findOut2 = find  (`elem` ['a'..'z']) "ARUN" -- gives "Nothing"
 findOut3 = find (>3) [1, 2, 3, 4, 5, 6]   -- gives "Just 4"
 
--- elemIndex: same as 'elem' but, instead returning boolean, returns the index 
+-- elemIndex: same as 'elem' but, instead returning boolean, returns the index
 index1 = elemIndex 'a' "Tendulkar"                  -- gives "Just 7"
 -- findIndex: same as 'find' but, instead of the element, returns the index
 index2 = findIndex (>13) [11, 12, 13, 14, 15, 16]   -- gives "Just 3"
@@ -302,7 +302,7 @@ indices1 = elemIndices 'a' "SachinTendulkar" -- gives [1, 13]
 -- findIndices: same as findIndex, but returns a list
 -- instead of first occurrence, returns all satisfying elements
 indices2 = findIndices (>13) [11, 12, 13, 14, 15, 16] -- gives [3, 4, 5]
- 
+
 -- zip and zipWith : operates on two lists
 -- zip3, zip4 ... zip7:  operates on 3, 4.. 7 lists respectively
 -- same case with zipWith3, zipWith4 .. zipWith7
@@ -404,7 +404,7 @@ sortByList = let xs = [[5,4,5,4,4],[1,2,3],[3,5,4,3],[],[2],[2,2]] in
             sortBy (compare `on` length) xs
 -- outputs list ordered by sub-list's lengths.
 -- compare `on` length is \x y -> (length x) `compare` (length y)
- 
+
 -- Data.Char Module (IMPORTANT: To have imported in the beginning)
 -- Deals with characters and character lists (strings)
 
@@ -415,7 +415,7 @@ x1 = isControl inChar   -- checks whether the character is a control character
 x2 = isSpace inChar     -- checks whether the character is one of whitespace
                         -- space, tab, newlines etc [\s]
 x3 = isLower inChar     -- checks whether the character is lower case [a-z]
-x4 = isUpper inChar     -- checks whether the character is upper case [A-Z]                  
+x4 = isUpper inChar     -- checks whether the character is upper case [A-Z]
 x5 = isAlpha inChar     -- checks whether the character is an alphabet [a-zA-Z]
 x6 = isAlphaNum inChar  -- checks whether fits in RegEx [0-9a-zA-Z]
 x7 = isPrint inChar     -- checks whether the character is printable
@@ -444,7 +444,7 @@ isPasswordValid = all $ isAlphaNum
 -- "words" is roughly equivalent to "groupBy ((==) `on` isSpace)"
 -- "groupBy ((==) `on` isSpace)" catches the single spaces between the words too!
 -- filter out the empty spaces
--- filter (not . any isSpace) ["hi", " ", "hello", " ", "greet"]  
+-- filter (not . any isSpace) ["hi", " ", "hello", " ", "greet"]
 -- The above function removes space sub-lists (returns ["hi","hello","greet"])
 -- So, "words" is equivalent to "(filter (not . any isSpace) . groupBy ((==) `on` isSpace))"
 customWords :: [Char] -> [[Char]]
@@ -472,31 +472,31 @@ outLetter4 = intToDigit 15          -- gets 'f'
 
 -- The following code converts a number from hexadecimal to decimal
 convToDec :: [Char] -> Int
-convToDec inHex = sum $ zipWith (*) 
-                    (zipWith (^) 
-                        (take lenH [16, 16..]) $ 
-                        [lenH - 1, lenH - 2..0]) $ 
-                    map digitToInt inHex 
+convToDec inHex = sum $ zipWith (*)
+                    (zipWith (^)
+                        (take lenH [16, 16..]) $
+                        [lenH - 1, lenH - 2..0]) $
+                    map digitToInt inHex
                     where lenH = length inHex
-                    
+
 -- ord: converts a letter to its ascii value
 -- chr: given an ascii value, converts to the corresponding letter
 chrOut = chr 97         -- chrOut gets 'a'
 ordOut = ord 'a'        -- ordOut gets 97
 
--- Ceasar cipher: (shift each letter by a fixed position) using ord and chr 
+-- Ceasar cipher: (shift each letter by a fixed position) using ord and chr
 encode :: Int -> String -> String
 encode shift msg =
     let ords = map ord msg
         shifted = map (+ shift) ords
     in  map chr shifted
-    
+
 decode :: Int -> String -> String
 decode shift msg =
     let ords = map ord msg
         shifted = map ((-) shift) ords
-    in  map chr shifted    
-                    
+    in  map chr shifted
+
 -- Same, using function composition
 encodeComp shift msg = map (chr . ((+) shift) . ord) msg
 decodeComp shift msg = map (chr . ((-) shift) . ord) msg
@@ -517,7 +517,7 @@ cricketRunsList = [("Tendulkar", 15921), ("Ponting", 13378), ("Kallis", 13289),
 
 -- Function to look up a value, given a key
 findKey1 :: (Eq k) => k -> [(k,v)] -> v
--- Filter (k, v) pattern where k matches given 'key'. 
+-- Filter (k, v) pattern where k matches given 'key'.
 -- Take the first item in the filtered list and get its value (2nd in the pair)
 findKey1 key xs = snd . head . filter (\(k,v) -> key == k) $ xs
 -- If 'key' not found, head fn on empty list throws an error
@@ -614,12 +614,12 @@ elemsRuns = Map.elems mapRuns
 -- A function and an association list
 -- The function tells what to do when exist more than two values for the same key
 runsListToMap :: (Ord k) => [(k, Integer)] -> Map.Map k Integer
-runsListToMap xs = Map.fromListWith (\runs1 runs2 -> if runs1 > runs2 
-                                                        then runs1 
+runsListToMap xs = Map.fromListWith (\runs1 runs2 -> if runs1 > runs2
+                                                        then runs1
                                                         else runs2) xs
 mapRunsMax = runsListToMap cricketRunsList
 
--- Or simply 
+-- Or simply
 -- If the function takes just two parameters, we can as well give only that!
 mapRunsMax1 = Map.fromListWith max cricketRunsList
 -- To add
@@ -691,7 +691,7 @@ fibIntPrm = intersection' fibSet prmSet
 
 -- Using map function
 mult2 :: Set.Set Integer -> Set.Set Integer
-mult2 = Set.map (*2) 
+mult2 = Set.map (*2)
 fibSetX2 = mult2 fibSet
 
 -- Creating Own Modules
@@ -710,15 +710,15 @@ fibSetX2 = mult2 fibSet
 -- First we need to import the written modules (which is done at the beginning)
 -- import Geometry1 as Geometry1
 
--- import Geometry2 as Geometry2 
+-- import Geometry2 as Geometry2
 -- (the above statement is wrong! We can import a module based file, not folder)
 
 -- Usage:
 volumeCube = Cube.volume(4)
 areaSphere = Geometry1.sphereArea(3)
 
--- To import a module, use 
+-- To import a module, use
 -- :m +ModuleName in the ghci shell
 -- import ModuleName in a Haskell file (.hs file)
--- Read more here on ghci: 
+-- Read more here on ghci:
 -- http://www.haskell.org/ghc/docs/5.04/html/users_guide/ghci.html
