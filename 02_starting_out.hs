@@ -147,7 +147,7 @@ is_6_even = even 6              -- Returns True
 -- Following filters and takes even numbers, divides by 5 and tells true or false
 checkerlist xs = [if x `mod` 5 == 0 then True else False | x <- xs, even x]
 
-mod5checker xs = if xs `mod` 5 == 0 then True else False
+mod5checker x = if x `mod` 5 == 0 then True else False
 
 -- Returns all numbers which are even and also multiples of 5 (in input list)
 even_5multiples xs = [x | x <- xs, mod5checker x, even x]
@@ -211,11 +211,11 @@ own_zip xs1 xs2 = [ (x, y) | x <- xs1, y <- xs2]
 zip' :: [a] -> [b] -> [(a,b)]  
 zip' _ [] = []  
 zip' [] _ = []  
-zip' (x:xs) (y:ys) = (x,y):zip' xs ys
-
+zip' (x:xs) (y:ys) = (x, y) : zip' xs ys
 
 -- zip with infinite lists
 paired_alpha = zip [1..]["One", "Two", "Three"]
+
 
 -- Make triangles using list comprehension
 right_triangles = [(a, b, c) | a <- [1..10], b <- [1..10], c <- [1..10], 

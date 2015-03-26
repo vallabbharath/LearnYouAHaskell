@@ -4,11 +4,9 @@ import Control.Applicative
 -- Implementation 1
 -- Converts a given hexa decimal number (string) into a decimal number
 convToDec :: [Char] -> Integer
-convToDec inHex = sum $ zipWith (*) 
-                    (zipWith (^) 
-                        (take lenH [16, 16..]) $ 
-                        [lenH - 1, lenH - 2..0]) $ 
-                    map (toInteger.digitToInt) inHex 
+convToDec inHex =   sum $ zipWith (*) (zipWith (^) (take lenH [16, 16..]) $ 
+                                                   [lenH - 1, lenH - 2..0]) $ 
+                                       map (toInteger.digitToInt) inHex 
                     where lenH = length inHex
                     
 -- Implementation 2

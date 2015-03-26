@@ -12,7 +12,7 @@ import Data.List
 
 -- Converts a character list (i.e String) to an Int list
 strToIntList :: String -> [Int]
-strToIntList = map (read . (:""))
+strToIntList str = map (read . (:"")) str
 
 -- Converts an Int list to a character list
 intListToStr :: [Int] -> String

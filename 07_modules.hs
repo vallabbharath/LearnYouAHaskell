@@ -18,7 +18,7 @@ import qualified Data.Map as Map
 -- qualified import for Data.Set: functions clash with Data.List and Prelude
 import qualified Data.Set as Set
 
--- Importing in the ghci interpreter 
+-- Importing in the ghci interpreter
 -- Prelude> :m + Data.List
 -- Prelude Data.List> :m + Data.Map
 -- Prelude Data.List Data.Map>

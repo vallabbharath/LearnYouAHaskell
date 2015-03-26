@@ -5,12 +5,19 @@
 -- curried functions: functions with more than one parameter
 -- fn (x, y, z) : fn x y z :  fn -> x -> y -> z : fn -> x -> (y -> z)
 
-multThree :: (Num a) => a -> a -> a -> a  
+multThree :: (Num a) => (a -> (a -> (a -> a)))
 multThree x y z = x * y * z 
 
 -- in the statements below, a and b evaluates to be same
 a = multThree 2 3 4
 b = ((multThree 2) 3) 4 
+
+
+prod3 x y z = f3 z
+              where f3 = f2 y           -- f3 :: a -> a
+                    f2 = f1 x           -- f2 :: a -> (a -> a)
+                    f1 = multThree      -- f1 :: a -> (a -> (a -> a))
+
 
 -- ((multThree 2) 3) 4, here two functions are built up implicitly
 -- each taking one argument
@@ -199,9 +206,9 @@ collatzSeq n
     | otherwise = n : collatzSeq (3 * n + 1)
 
 
--- Find the length of Collatz Sequences of 1 to 100 whose length > 15    
-numLongChains :: Int  
-numLongChains = length (filter isLong (map collatzSeq [1..100]))
+-- Find the length of Collatz Sequences of 1 to n whose length > 15    
+numLongChains :: Int -> Int  
+numLongChains n = length (filter isLong (map collatzSeq [1..n]))
     where isLong xs = length xs > 15      
 
 -- map (2*) [0..10]  gives [0, 2, 4.. 20]
@@ -246,6 +253,18 @@ addThree3 = \x -> \y -> \z -> x + y + z
 -- return type is same as that of the accumulator
 -- Processes the binary function on the list, folds it up into a single value
 
+{-
+xs = [1, 2, 3, 4, 5]
+foldl (+) 0 xs
+0 [1, 2, 3, 4, 5]
+1 [2, 3, 4, 5]
+3 [3, 4, 5]
+6 [4, 5]
+10 [5]
+15 []
+15
+-}
+
 -- Example
 -- Sum of a list
 sumFold :: (Num a) => [a] -> a
@@ -270,7 +289,7 @@ elem' y ys = foldl (\acc x -> if x == y then True else acc) False ys
 -- (accumulator, current value) is the order for binary function in foldl
 
 -- Right Fold:: foldr :: parameters : binary function, accumulator, list
--- (current value, accumulator) is the order for binary function in foldl
+-- (current value, accumulator) is the order for binary function in foldr
 
 -- Implementing "map" function using foldr
 mapFoldr :: (a -> b) -> [a] -> [b]

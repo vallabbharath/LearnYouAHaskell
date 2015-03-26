@@ -52,7 +52,7 @@ tell (x:y:_) = "More than Two Elements!"
 -- Function for calculating length: Using  Pattern Matching
 len_fun :: (Num b) => [a] -> b
 len_fun [] = 0
-len_fun (_:x) = 1 + len_fun x
+len_fun (_: xs) = 1 + len_fun xs
 
 -- Function to calculate sum
 sum_fun :: (Num a) => [a] -> a
@@ -173,7 +173,7 @@ value4 :: (Integral a) => a -> a
 value4 n = case n of 0 -> 1 -- means value for index 0 is 1
                      1 -> 2 
                      2 -> 5
-                     n -> value3 p * value3 q 
+                     n -> value4 p * value4 q 
                             where   p = ceiling (fromIntegral n / 2 - 1) 
                                     q = floor (fromIntegral n / 2 + 1)                       
                                     

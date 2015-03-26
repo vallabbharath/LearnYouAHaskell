@@ -18,6 +18,7 @@ main = do
     putStr (map toUpper contents)
 
 -- capslocker.exe works without requiring external file piping too
+-- takes input from the stdin (console)
 -- > capslocker.exe
 -- this is a 
 -- THIS IS A
