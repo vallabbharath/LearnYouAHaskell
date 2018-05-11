@@ -1,0 +1,22 @@
+1. Write a function to get the volume of a cylinder
+2. Write your own functions for
+    1. maximum of a list
+    2. minimum of a list
+    3. length of a list
+    4. sum of a list
+    5. head of a list
+    6. tail of a list
+    7. init of a list
+    8. last of a list
+3. Write a function to generate this series [1, -2, 3, -4, 5 ..]
+4. Write a function to generate a tuple with +1 and -1 values of the given number
+5. Write a function to calculate the hypotenuse of a triangle
+6. Write a function to calculate the left over area inside a circle circumscribing a square.
+7. Write a function to take out the second element in the list
+8. Write a function to take out the penultimate element in the list
+9. Write a function that takes an alphabet and creates a tuple 'a' gives ('a', 1); 'A' gives ('A', 1)
+10. Country and Capital are given as list of tuples [('India', 'Delhi')]. Write functions getCapital and getCountry that takes in country and capital respectively and gives proper result.
+11. Write a function to convert celcius to farenheit
+12. Generalise the temperature conversion function.  From To Value
+    Example: 100 "C" "to K"  gives 373
+             373 "K" "to F"  gives 212
